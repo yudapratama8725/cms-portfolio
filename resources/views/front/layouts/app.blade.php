@@ -15,6 +15,7 @@
         @yield('content')
 
         @stack('after-script')
+        <script src="https://cdn.tailwindcss.com"></script>
         @stack('before-script')
 
     </body>
