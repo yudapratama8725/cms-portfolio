@@ -16,6 +16,7 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
+Route::get('/details', [FrontController::class, 'details'])->name('front.details');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
