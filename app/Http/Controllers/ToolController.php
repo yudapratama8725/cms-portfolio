@@ -101,5 +101,15 @@ class ToolController extends Controller
     public function destroy(Tool $tool)
     {
         //
+        try {
+            $tool->delete();
+            return redirect()->back()->with('success', 'Tool deleted sucessfully!');
+        } 
+        //Jika Data Tidak Valid Maka Data Tidak Akan Masuk Ke Database / Rollback
+        catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'System Error!'.$e->getMessage());
+        }
     }
 }
