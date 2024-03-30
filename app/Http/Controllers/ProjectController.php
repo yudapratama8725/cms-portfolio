@@ -14,6 +14,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        //Munculin Data Yang Soft Deletes
+        // $projects = Project::withTrashed()->orderBy('id', 'desc')->get();
+        // return view('admin.projects.index', [
+        //     'projects' => $projects
+        // ]);
+
+        //Munculin Data Yang Tidak Soft Deletes
         $projects = Project::orderBy('id', 'desc')->get();
         return view('admin.projects.index', [
             'projects' => $projects
@@ -37,7 +44,7 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string',
-            'cover' => 'required|image|mimes:png|max:2048',
+            'cover' => 'required|image|mimes:png|max:10048',
             'about' => 'required|string|max:65535'
         ]); 
 
@@ -130,5 +137,15 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+        try {
+            $project->delete();
+            return redirect()->back()->with('success', 'Project deleted sucessfully!');
+        } 
+        //Jika Data Tidak Valid Maka Data Tidak Akan Masuk Ke Database / Rollback
+        catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'System Error!'.$e->getMessage());
+        }
     }
 }
