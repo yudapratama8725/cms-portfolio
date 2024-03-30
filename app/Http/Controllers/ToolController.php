@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tool;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ToolController extends Controller
 {
@@ -12,7 +14,17 @@ class ToolController extends Controller
      */
     public function index()
     {
-        //
+        //Munculin Data Yang Soft Deletes
+        // $projects = Project::withTrashed()->orderBy('id', 'desc')->get();
+        // return view('admin.projects.index', [
+        //     'projects' => $projects
+        // ]);
+
+        //Munculin Data Yang Tidak Soft Deletes
+        $tools = Tool::orderBy('id', 'desc')->get();
+        return view('admin.tools.index', [
+            'tools' => $tools
+        ]);
     }
 
     /**
@@ -20,7 +32,7 @@ class ToolController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tools.create');
     }
 
     /**
@@ -28,7 +40,35 @@ class ToolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Request
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'tagline' => 'required|string|max:255',
+            'logo' => 'required|image|mimes:png|max:10048',
+        ]); 
+
+
+        //Memastikan Semua Data Terisi Dengan Benar Masuk ke Database
+        DB::beginTransaction();
+
+        try{
+            if($request->hasFile('logo')){
+                $path = $request->file('logo')->store('tools', 'public');
+                $validated['logo'] = $path;
+            }
+
+            $newTool = Tool::create($validated);
+
+            DB::commit();
+
+            return redirect()->route('admin.tools.index')->with('success', 'Tool created successfully');
+        }
+        //Jika Data Tidak Valid Maka Data Tidak Akan Masuk Ke Database / Rollback
+        catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'System Error!'.$e->getMessage());
+        }
     }
 
     /**
