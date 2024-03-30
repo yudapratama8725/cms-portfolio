@@ -84,7 +84,9 @@ class ToolController extends Controller
      */
     public function edit(Tool $tool)
     {
-        //
+        return view('admin.tools.edit', [
+            'tool' => $tool
+        ]);
     }
 
     /**
@@ -92,7 +94,35 @@ class ToolController extends Controller
      */
     public function update(Request $request, Tool $tool)
     {
-        //
+        //Request
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'tagline' => 'required|string|max:255',
+            'logo' => 'sometimes|image|mimes:png|max:10048',
+        ]); 
+
+
+        //Memastikan Semua Data Terisi Dengan Benar Masuk ke Database
+        DB::beginTransaction();
+
+        try{
+            if($request->hasFile('logo')){
+                $path = $request->file('logo')->store('tools', 'public');
+                $validated['logo'] = $path;
+            }
+
+            $tool->update($validated);
+
+            DB::commit();
+
+            return redirect()->route('admin.tools.index')->with('success', 'Tool updated successfully');
+        }
+        //Jika Data Tidak Valid Maka Data Tidak Akan Masuk Ke Database / Rollback
+        catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'System Error!'.$e->getMessage());
+        }
     }
 
     /**
