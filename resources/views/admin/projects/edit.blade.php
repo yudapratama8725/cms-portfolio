@@ -66,7 +66,7 @@
                         </div>
 
                         <button type="submit" class="py-4 w-full rounded-full bg-violet-700 font-bold text-white">
-                            Upload Project
+                            Update Project
                         </button>
 
                     </div>
