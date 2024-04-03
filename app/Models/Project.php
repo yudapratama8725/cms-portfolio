@@ -13,4 +13,8 @@ class Project extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function tools(){
+        return $this->belongsToMany(Tool::class, 'project_tools', 'project_id', 'tool_id');
+    }
 }
