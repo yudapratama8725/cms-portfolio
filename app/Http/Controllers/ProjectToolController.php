@@ -36,9 +36,31 @@ class ProjectToolController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project)
     {
-        //
+        //Request
+        $validated = $request->validate([
+            'tool_id' => 'required|integer',
+        ]); 
+
+
+        //Memastikan Semua Data Terisi Dengan Benar Masuk ke Database
+        DB::beginTransaction();
+
+        try{
+            $validated['project_id'] = $project->id;
+            $assignTool = ProjectTool::create($validated);
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Tool assign successfully');
+        }
+        //Jika Data Tidak Valid Maka Data Tidak Akan Masuk Ke Database / Rollback
+        catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'System Error!'.$e->getMessage());
+        }
     }
 
     /**

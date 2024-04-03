@@ -36,7 +36,9 @@ Route::middleware('auth')->group(function () {
         Route::resource('tools', ToolController::class);
 
         //Project Tool
-        Route::resource('project_tools', ProjectToolController::class);
+        Route::get('/tools/assign/{project}', [ProjectToolController::class, 'create'])->name('project.assign.tool');
+        Route::post('/tools/assign/save/{project}', [ProjectToolController::class, 'store'])->name('project.assign.tool.store');
+
     }); 
 });
 

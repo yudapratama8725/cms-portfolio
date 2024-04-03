@@ -21,7 +21,7 @@
                         
                     @endif
                 
-                <form action="{{ route('admin.project_tools.store', $project) }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ route('admin.project.assign.tool.store', $project) }}" enctype="multipart/form-data" method="POST">
 
                     @csrf
 
