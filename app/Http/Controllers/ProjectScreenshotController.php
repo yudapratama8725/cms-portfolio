@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\ProjectScreenshot;
 use Illuminate\Http\Request;
 
+use App\Models\Tool;
+use App\Models\Project;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ToolController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 class ProjectScreenshotController extends Controller
 {
     /**
@@ -18,9 +25,11 @@ class ProjectScreenshotController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
-        //
+        return view('admin.project_screenshot.create', [
+            'project' => $project
+        ]);
     }
 
     /**
