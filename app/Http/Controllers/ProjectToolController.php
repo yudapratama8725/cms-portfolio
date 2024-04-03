@@ -6,10 +6,7 @@ use App\Models\ProjectTool;
 use App\Models\Tool;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class ProjectToolController extends Controller
 {

@@ -5,12 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ProjectScreenshot;
 use Illuminate\Http\Request;
 
-use App\Models\Tool;
 use App\Models\Project;
-use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\ToolController;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class ProjectScreenshotController extends Controller
 {
