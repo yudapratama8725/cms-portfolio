@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="flex flex-row items-center gap-x-2">
-                            <form action="{{ route('admin.project_screenshot.destroy', 'xxx') }}" method="POST">
+                            <form action="{{ route('admin.project_screenshot.destroy', $screenshot->id) }}" method="POST">
 
                                 @csrf
                                 @method('DELETE')

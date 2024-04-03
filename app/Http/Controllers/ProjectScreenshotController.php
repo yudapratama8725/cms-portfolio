@@ -98,5 +98,15 @@ class ProjectScreenshotController extends Controller
     public function destroy(ProjectScreenshot $projectScreenshot)
     {
         //
+        try {
+            $projectScreenshot->delete();
+            return redirect()->back()->with('success', 'Screenshot deleted sucessfully!');
+        } 
+        //Jika Data Tidak Valid Maka Data Tidak Akan Masuk Ke Database / Rollback
+        catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'System Error!'.$e->getMessage());
+        }
     }
 }
