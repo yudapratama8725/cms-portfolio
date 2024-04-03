@@ -35,9 +35,37 @@ class ProjectScreenshotController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Project $project)
     {
-        //
+        //Request
+        $validated = $request->validate([
+            'screenshot' => 'required|image|mimes:png|max:10048',
+        ]); 
+
+
+        //Memastikan Semua Data Terisi Dengan Benar Masuk ke Database
+        DB::beginTransaction();
+
+        try{
+            if($request->hasFile('screenshot')){
+                $path = $request->file('screenshot')->store('project_screenshot', 'public');
+                $validated['screenshot'] = $path;
+            }
+
+            $validated ['project_id'] = $project->id;
+
+            $newScreenshot = ProjectScreenshot::create($validated);
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Screenshot Added successfully');
+        }
+        //Jika Data Tidak Valid Maka Data Tidak Akan Masuk Ke Database / Rollback
+        catch(\Exception $e){
+            DB::rollBack();
+
+            return redirect()->back()->with('error', 'System Error!'.$e->getMessage());
+        }
     }
 
     /**

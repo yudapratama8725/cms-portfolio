@@ -71,18 +71,10 @@
 
                         <div class="flex flex-row items-center gap-x-5">
                             <img src="{{ Storage::url($screenshot->screenshot) }}" class="object-cover w-[120px] h-[90px] rounded-2xl">
-                            <div class="flex flex-col gap-y-1">
-                                <h3 class="font-bold text-xl">
-                                    {{ $tool->name }}
-                                </h3>
-                                <p class="text-sm text-slate-400">
-                                    {{ $tool->tagline }}
-                                </p>
-                            </div>
                         </div>
 
                         <div class="flex flex-row items-center gap-x-2">
-                            <form action="{{ route('admin.project_tools.destroy', $tool->pivot->id) }}" method="POST">
+                            <form action="{{ route('admin.project_screenshot.destroy', 'xxx') }}" method="POST">
 
                                 @csrf
                                 @method('DELETE')
