@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('projects', ProjectController::class);
         Route::resource('tools', ToolController::class);
 
+        //Project Tool
         Route::resource('project_tools', ProjectToolController::class);
     }); 
 });

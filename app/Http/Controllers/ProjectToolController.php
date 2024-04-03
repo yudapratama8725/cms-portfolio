@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProjectTool;
+use App\Models\Tool;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ToolController;
@@ -14,21 +16,21 @@ class ProjectToolController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Project $project)
+    public function index()
     {
-        $tools = Tool::orderBy('id', 'desc')->get();
-        return view('admin.project_tools.create', [
-            'tool' => $tool,
-            'project' => $project
-        ]);
+       
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
-        //
+        $tools = Tool::orderBy('id', 'desc')->get();
+        return view('admin.project_tools.create', [
+            'tools' => $tools,
+            'project' => $project
+        ]);
     }
 
     /**

@@ -35,9 +35,8 @@
                                 Tools
                             </h3>
                             <select name="tool_id" id="tool_id">
-
-                                @forelse ($tools as $tool)
                                 <option value="">Choose Tool Below</option>
+                                @forelse ($tools as $tool)
                                 <option value="{{ $tool->id }}">{{ $tool->name }}</option>
                                 @empty
                                 <option value="">Choose Tool Below</option>
