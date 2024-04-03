@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="flex flex-row items-center gap-x-2">
-                            <form action="{{ route('admin.tools.destroy', $tool) }}" method="POST">
+                            <form action="{{ route('admin.project_tools.destroy', $tool->pivot->id) }}" method="POST">
 
                                 @csrf
                                 @method('DELETE')
