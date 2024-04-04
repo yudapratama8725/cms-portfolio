@@ -13,8 +13,10 @@ class FrontController extends Controller
         ]);
     }
 
-    public function details(){
-        return view('front.details');
+    public function details(Project $project){
+        return view('front.details', [
+            'project' => $project
+        ]);
     }
 
     public function book(){

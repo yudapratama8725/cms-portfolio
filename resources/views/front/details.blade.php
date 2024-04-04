@@ -29,10 +29,10 @@
         </div>
     </nav>
     <div class="hero container max-w-[1130px] mx-auto flex flex-col justify-center items-center relative">
-        <h1 class="font-extrabold text-[50px] leading-[70px] text-white text-center z-10">AI Finance Insurance</h1>
-        <p class="text-xl leading-[30px] text-white z-10">Website Development</p>
+        <h1 class="font-extrabold text-[50px] leading-[70px] text-white text-center z-10">{{ $project->name }}</h1>
+        <p class="text-xl leading-[30px] text-white z-10">{{ $project->category }}</p>
         <div class="flex shrink-0 w-full h-[800px] rounded-[50px] overflow-hidden bg-white mt-[70px] z-10">
-            <img src="{{ asset('images/thumbnails/details-thumbnail.png') }}" class="w-full h-full object-cover" alt="thumbnail">
+            <img src="{{ Storage::url($project->cover) }}" class="w-full h-full object-cover" alt="thumbnail">
         </div>
         <img src="{{ asset('images/Ellipse.svg') }}" class="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-[135px] w-[35%]" alt="background icon">
     </div>
@@ -43,8 +43,7 @@
         <div class="flex flex-col gap-5">
             <h2 class="font-extrabold text-2xl">The First Purpose</h2>
             <div class="description flex flex-col gap-4 font-medium text-lg leading-[38px]">
-                <p>FinanceAI is a cutting-edge mobile application revolutionizing personal finance management through artificial intelligence. This intuitive app is engineered to empower users with real-time financial insights and personalized.</p>
-                <p>At the heart of FinanceAI lies a sophisticated AI engine that analyzes spending patterns, investment choices, and saving habits to offer tailored recommendations. Whether it's optimizing budgets, identifying investment opportunities, or potential savings, FinanceAI ensures users are always a step ahead in their financial.</p>
+                {!! $project->about !!}
             </div>
             <div class="flex gap-4">
                 <div class="flex items-center gap-1 bg-[#F4F5F8] p-[8px_10px] rounded-[12px]">
@@ -70,33 +69,23 @@
         <div class="flex flex-col gap-5">
             <h2 class="font-extrabold text-2xl">Software Used</h2>
             <div class="software-container flex flex-col shrink-0 gap-5 w-[325px]">
+
+                @forelse($project->tools as $tool)
+
                 <div class="card-software w-full flex items-center bg-[#F4F5F8] rounded-2xl p-5 gap-4 transition-all duration-300 hover:ring-2 hover:ring-portto-purple">
                     <div class="w-[70px] h-[70px] bg-white rounded-full flex shrink-0 items-center justify-center">
-                        <img src="{{ asset('images/logos/react.svg') }}" alt="tool">
+                        <img src="{{ Storage::url($tool->logo) }}" alt="tool">
                     </div>
                     <div class="flex flex-col gap-[2px]">
-                        <p class="tool-title font-bold text-xl leading-[30px]">React JS</p>
-                        <p class="text-lg text-[#878C9C]">Web Framework</p>
+                        <p class="tool-title font-bold text-xl leading-[30px]">{{ $tool->name }}</p>
+                        <p class="text-lg text-[#878C9C]">{{ $tool->tagline }}</p>
                     </div>
                 </div>
-                <div class="card-software w-full flex items-center bg-[#F4F5F8] rounded-2xl p-5 gap-4 transition-all duration-300 hover:ring-2 hover:ring-portto-purple">
-                    <div class="w-[70px] h-[70px] bg-white rounded-full flex shrink-0 items-center justify-center">
-                        <img src="{{ asset('images/logos/blender.svg') }}" alt="tool">
-                    </div>
-                    <div class="flex flex-col gap-[2px]">
-                        <p class="tool-title font-bold text-xl leading-[30px]">Blender 3D</p>
-                        <p class="text-lg text-[#878C9C]">Product Modeling</p>
-                    </div>
-                </div>
-                <div class="card-software w-full flex items-center bg-[#F4F5F8] rounded-2xl p-5 gap-4 transition-all duration-300 hover:ring-2 hover:ring-portto-purple">
-                    <div class="w-[70px] h-[70px] bg-white rounded-full flex shrink-0 items-center justify-center">
-                        <img src="{{ asset('images/logos/figma.svg') }}" alt="tool">
-                    </div>
-                    <div class="flex flex-col gap-[2px]">
-                        <p class="tool-title font-bold text-xl leading-[30px]">Figma</p>
-                        <p class="text-lg text-[#878C9C]">UI/UX Design</p>
-                    </div>
-                </div>
+                @empty
+                <P>Belum ada software ditambahkan.</P>
+
+                @endforelse
+
             </div>
         </div>
     </div>
@@ -106,22 +95,20 @@
     <div class="flex flex-col gap-5">
         <h2 class="font-extrabold text-2xl">Screenshots</h2>
         <div class="grid grid-cols-4 gap-5">
-            <a href="{{ asset('images/thumbnails/thumbnail1.png') }}" class="group w-full h-[190px] flex overflow-hidden rounded-[30px] ring-1 ring-[#E4E5E8] transition-all duration-300 hover:ring-[3px] hover:ring-portto-purple relative" data-fancybox="gallery" data-caption="Screenshot #1">
-                <img src="{{ asset('images/thumbnails/thumbnail1.png') }}" class="w-full h-full object-cover" alt="thumbnail">
-                <img src="{{ asset('images/icons/eye.svg') }}" class="absolute transition-all duration-300 opacity-0 group-hover:opacity-100  transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10" alt="icon eye">
-            </a>
-            <a href="{{ asset('images/thumbnails/thumbnail2.png') }}" class="group w-full h-[190px] flex overflow-hidden rounded-[30px] ring-1 ring-[#E4E5E8] transition-all duration-300 hover:ring-[3px] hover:ring-portto-purple relative" data-fancybox="gallery" data-caption="Screenshot #1">
-                <img src="{{ asset('images/thumbnails/thumbnail2.png') }}" class="w-full h-full object-cover" alt="thumbnail">
-                <img src="{{ asset('images/icons/eye.svg') }}" class="absolute transition-all duration-300 opacity-0 group-hover:opacity-100  transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10" alt="icon eye">
-            </a>
-            <a href="{{ asset('images/thumbnails/thumbnail3.png') }}" class="group w-full h-[190px] flex overflow-hidden rounded-[30px] ring-1 ring-[#E4E5E8] transition-all duration-300 hover:ring-[3px] hover:ring-portto-purple relative" data-fancybox="gallery" data-caption="Screenshot #1">
-                <img src="{{ asset('images/thumbnails/thumbnail3.png') }}" class="w-full h-full object-cover" alt="thumbnail">
-                <img src="{{ asset('images/icons/eye.svg') }}" class="absolute transition-all duration-300 opacity-0 group-hover:opacity-100  transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10" alt="icon eye">
-            </a>
-            <a href="{{ asset('images/thumbnails/thumbnail1.png') }}" class="group w-full h-[190px] flex overflow-hidden rounded-[30px] ring-1 ring-[#E4E5E8] transition-all duration-300 hover:ring-[3px] hover:ring-portto-purple relative" data-fancybox="gallery" data-caption="Screenshot #1">
-                <img src="{{ asset('images/thumbnails/thumbnail1.png') }}" class="w-full h-full object-cover" alt="thumbnail">
-                <img src="{{ asset('images/icons/eye.svg') }}" class="absolute transition-all duration-300 opacity-0 group-hover:opacity-100  transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10" alt="icon eye">
-            </a>
+
+            @forelse($project->screenshots as $screenshot)
+
+                <a href="{{ Storage::url($screenshot->screenshot) }}" class="group w-full h-[190px] flex overflow-hidden rounded-[30px] ring-1 ring-[#E4E5E8] transition-all duration-300 hover:ring-[3px] hover:ring-portto-purple relative" data-fancybox="gallery" data-caption="Screenshot #1">
+                    <img src="{{ Storage::url($screenshot->screenshot) }}" class="w-full h-full object-cover" alt="thumbnail">
+                    <img src="{{ asset('images/icons/eye.svg') }}" class="absolute transition-all duration-300 opacity-0 group-hover:opacity-100  transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-10" alt="icon eye">
+                </a>
+
+            @empty
+            <P>Belum ada software ditambahkan.</P>
+
+            @endforelse
+
+
         </div>
     </div>
 </section>

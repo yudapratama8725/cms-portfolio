@@ -188,7 +188,7 @@
                                 <p class="font-extrabold text-[32px] leading-[48px] mb-[10px] text-white">{{ $project->name }}</p>
                                 <p class="text-lg text-[#BABABC]">{{ $project->category }}</p>
                             </div>
-                            <a href="details.html" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
+                            <a href="{{ route('front.details', $project) }}" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
                             <img src="{{ asset('images/Ellipse.svg') }}" class="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 w-1/2" alt="background icon">
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                                 <p class="font-extrabold text-[32px] leading-[48px] mb-[10px] text-white">{{ $project->name }}</p>
                                 <p class="text-lg text-[#BABABC]">{{ $project->category }}</p>
                             </div>
-                            <a href="details.html" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
+                            <a href="{{ route('front.details', $project) }}" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
                             <img src="{{ asset('images/Ellipse.svg') }}" class="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 w-1/2" alt="background icon">
                         </div>
                     </div>
@@ -238,7 +238,7 @@
                                 <p class="font-extrabold text-[32px] leading-[48px] mb-[10px] text-white">{{ $project->name }}</p>
                                 <p class="text-lg text-[#BABABC]">{{ $project->category }}</p>
                             </div>
-                            <a href="details.html" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
+                            <a href="{{ route('front.details', $project) }}" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
                             <img src="{{ asset('images/Ellipse.svg') }}" class="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 w-1/2" alt="background icon">
                         </div>
                     </div>
@@ -261,7 +261,7 @@
                                 <p class="font-extrabold text-[32px] leading-[48px] mb-[10px] text-white">{{ $project->name }}</p>
                                 <p class="text-lg text-[#BABABC]">{{ $project->category }}</p>
                             </div>
-                            <a href="details.html" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
+                            <a href="{{ route('front.details', $project) }}" class="z-10 font-bold text-lg text-center w-fit h-fit bg-portto-light-gold rounded-full p-[14px_30px] transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">View Details</a>
                             <img src="{{ asset('images/Ellipse.svg') }}" class="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 w-1/2" alt="background icon">
                         </div>
                     </div>
