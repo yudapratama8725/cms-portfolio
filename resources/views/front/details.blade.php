@@ -3,31 +3,9 @@
 @section('content')
 
 <section id="Header" class="flex flex-col gap-[100px] bg-portto-black relative max-h-[665px] mb-[493px]">
-    <nav class="container max-w-[1130px] mx-auto flex justify-between items-center pt-[30px] z-10">
-        <a href="index.html" class="flex shrink-0 h-fit w-fit">
-            <img src="{{ asset('images/logos/logo.svg') }}" alt="logo">
-        </a>
-        <div class="flex gap-[50px] items-center">
-            <ul class="flex gap-[50px] items-center text-white">
-                <li>
-                    <a href="index.html"  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">Home</a>
-                </li>
-                <li>
-                    <a href=""  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">Services</a>
-                </li>
-                <li>
-                    <a href=""  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">Testimonials</a>
-                </li>
-                <li>
-                    <a href=""  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">Pricing</a>
-                </li>
-                <li>
-                    <a href=""  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">About</a>
-                </li>
-            </ul>
-            <button class="bg-portto-light-gold font-bold text-lg p-[14px_30px] rounded-full transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">Hire Me</button>
-        </div>
-    </nav>
+    
+    <x-nav/>
+
     <div class="hero container max-w-[1130px] mx-auto flex flex-col justify-center items-center relative">
         <h1 class="font-extrabold text-[50px] leading-[70px] text-white text-center z-10">{{ $project->name }}</h1>
         <p class="text-xl leading-[30px] text-white z-10">{{ $project->category }}</p>
@@ -186,7 +164,7 @@
         <div class="flex flex-col gap-5 items-center justify-center text-center w-fit">
             <h2 class="font-extrabold text-[40px] leading-[60px] text-white">Let Me Help You <br>Grow Business Today</h2>
             <p class="font-semibold text-lg leading-[32px] text-white">I will dedicate my entire career to focus <br>on finishing your future dreams</p>
-            <a href="book.html" class="bg-portto-light-gold font-bold text-lg p-[14px_30px] rounded-full transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">Book a Meeting</a>
+            <a href="{{ route('front.book') }}" class="bg-portto-light-gold font-bold text-lg p-[14px_30px] rounded-full transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">Book a Meeting</a>
         </div>
         <div class="group/projects w-[220px] overflow-hidden">    
             <div class="slider flex flex-col h-max justify-center">
