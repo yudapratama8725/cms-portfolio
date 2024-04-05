@@ -5,7 +5,9 @@
     <div class="flex gap-[50px] items-center">
         <ul class="flex gap-[50px] items-center text-white">
             <li>
-                <a href="{{ route('front.index') }}"  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">Home</a>
+                {{-- <a href="{{ route('front.index') }}"  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300" aria-current="page">Home</a> --}}
+
+                <a href="{{ route('front.index') }}" class=" font-medium text-lg hover:text-portto-light-gold transition-all duration-300">Home</a>
             </li>
             <li>
                 <a href="{{ route('front.services') }}"  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">Services</a>
@@ -20,6 +22,6 @@
                 <a href="{{ route('front.index') }}"  class="font-medium text-lg hover:text-portto-light-gold transition-all duration-300">About</a>
             </li>
         </ul>
-        <button class="bg-portto-light-gold font-bold text-lg p-[14px_30px] rounded-full transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">Hire Me</button>
+        <a href="{{ route('front.book') }}" class="bg-portto-light-gold font-bold text-lg p-[14px_30px] rounded-full transition-all duration-300 hover:shadow-[0_10px_20px_0_#FFE7C280]">Hire Me</a>
     </div>
 </nav>
